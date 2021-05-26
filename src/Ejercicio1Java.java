@@ -83,21 +83,28 @@ public class Ejercicio1Java {
      en googlear cómo utilizar dichos recursos y ¡utilizarlos!
      */
 
-    public static List<Integer> getDigits(int i) {
-        List<Integer> digits = new ArrayList<>();
-        while(i > 0) {
-            digits.add(i % 10);
-            i /= 10;
+    public static int contarCaracteresEnCadena(String cadena, char caracter) {
+        int posicion, contador = 0;
+        posicion = cadena.indexOf(caracter);
+        while (posicion != -1) {
+            contador++;
+            posicion = cadena.indexOf(caracter, posicion + 1);
         }
-        return digits;
+        return contador;
     }
 
     public static void numeroBuscado(int n, int m, int d){
-        int i = 0;
-        while(i <n){
-            List<Integer> digitsList = getDigits(i);
-
+        int contador = 0;
+        int i = 1;
+        while(contador<n){
+            char compare = Integer.toString(d).charAt(0);
+            if(contarCaracteresEnCadena(Integer.toString(i), compare) >= m) {
+                System.out.print(i + " ");
+                contador++;
+            }
+            i++;
         }
+        System.out.print("\n\n\n");
     }
 
 
